@@ -42,20 +42,13 @@ for algoritmo in algoritmos:
     plt.grid(True)
     plt.show()
     
-    # Teste de Shapiro-Wilk
-    stat, p_valor = shapiro(dados)
-    
     #resultados
     results[algoritmo] = {
-        'W': stat,
-        'p-valor': p_valor,
         'média': media,
         'desvio padrão': desvio
     }
 
 # Exibir resultados finais
-print("Resultados do Teste de Shapiro-Wilk + Estatísticas Descritivas:\n")
+print("Estatísticas descritivas por algoritmo:\n")
 for alg, res in results.items():
-    interpretacao = "✅ Provavelmente normal" if res['p-valor'] > 0.05 else "❌ Provavelmente não normal"
-    print(f"{alg}: W = {res['W']:.4f}, p = {res['p-valor']:.5f} → {interpretacao}")
-    print(f"     Média = {res['média']:.4f} ms, Desvio Padrão = {res['desvio padrão']:.4f} ms\n")
+    print(f"{alg}: Média = {res['média']:.4f} ms, Desvio Padrão = {res['desvio padrão']:.4f} ms")
